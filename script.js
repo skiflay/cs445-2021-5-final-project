@@ -45,7 +45,7 @@ window.onload = function login() {
  
        async function animation(token) {
           let templateAnimation = `
-                                  <h2>This is My Location</h2>
+                                  <h3>Here is Your Location:</h3>
                                  <textarea id ="animation" rows = "20" cols = "60"></textarea></br>
                                 <button id ="refresh">Refresh Animation</button>
                                <button id ="logout">Logout</button>`;
@@ -77,8 +77,8 @@ window.onload = function login() {
              const getGeoLocation = await fetch(location_url);
              const location = await getGeoLocation.json();
              const adress = await location.results[0].locations;
-             document.querySelector("h2").innerHTML += `<div> ${adress[0].street} ,${adress[0].adminArea5}
-                                                        ,${adress[0].adminArea3} ,${adress[0].postalCode} ,
+             document.querySelector("h3").innerHTML += `<div> ${adress[0].street}, ${adress[0].adminArea5},
+                                                        ${adress[0].adminArea3}, ${adress[0].postalCode},
                                                          ${adress[0].adminArea1} </div>`;
  
           }
@@ -93,7 +93,7 @@ window.onload = function login() {
              }
           })
           const picture = await res.text();
-          let arrayPictures = picture.split("=====");
+          let arrayPictures = picture.split("=====\n");
  
           let curNewsIndex = -1;
           let intervalID = setInterval(function () {
